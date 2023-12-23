@@ -1,0 +1,16 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+    <h1>Product info</h1>
+    <hr>
+        {% if product.image %}
+            <image src="/media/{{ product.image }}" alt="{{ product.name }}" style="width: 250px; height: 250px;">
+        {% endif %}
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Save</button>
+        </form>
+    <hr>
+    <p><a href="{% url 'products' %}">To products</a></p>
+{% endblock content %}

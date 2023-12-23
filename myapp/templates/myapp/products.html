@@ -1,0 +1,30 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+    <h1>Products</h1>
+    <hr>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Image</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                <tr>
+                    <td scope="row">{{ product.id }}</td>
+                    <td><a href="{% url 'product_info' product.id %}">{{ product.name }}</a></td>
+                    <td>{{ product.price }}</td>
+                    <td>{{ product.product_quantity }}</td>
+                    <td><image src="/media/{{ product.image }}" alt="{{ product.name }}" style="width: 100px; height: 100px;"></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}
